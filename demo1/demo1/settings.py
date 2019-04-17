@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# 确定项目位置？？？
 ROOT_URLCONF = 'demo1.urls'
 
 TEMPLATES = [
@@ -77,13 +78,32 @@ WSGI_APPLICATION = 'demo1.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
+    # 连接sqlite3数据库
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         # BASE_DIR  项目根目录
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+
     }
+    # 连接mysql数据库
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     # BASE_DIR  项目根目录
+    #     'NAME':'dbdemo1',
+    #     'USER':'root',
+    #     'PASSWORD':'123456',
+
+    # }
 }
 
+
+
+
+
+"""
+mysql 可以使用pymysql驱动2.2版本不行
+安装mysqlclient 适应django2.2
+"""
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
