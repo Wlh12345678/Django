@@ -16,13 +16,13 @@ def index(request):
     # 返回模板
     # return HttpResponse(result)
 
-    return render(request,'booktest/index.html',{"username":"wlh"})
+    return render(request,'booktest/index.html',{"username": "wlh"})
 
 def list(request):
     print("请求",request)
     # BookInfo.objects.all() 查询BookInfo内的所有信息
     b1 = BookInfo.objects.all()
-    return render(request,'booktest/list.html',context={'booklist':b1})
+    return render(request, 'booktest/list.html', context={'booklist':b1})
 
 def detail(request,id):
     # try:

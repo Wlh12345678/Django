@@ -7,10 +7,10 @@ app_name = 'booktest'
 urlpatterns = [
     # url('index/',views.index),
     # url('index/$',views.index),
-    url(r'^$', views.index,name='index'),
-    url(r'^list/$', views.list,name='list'),
+    url(r'^$', views.index, name='index'),
+    url(r'^list/$', views.list, name='list'),
     # (\d+) 详情页页码
-    url(r'^detail/(\d+)/$',views.detail,name='detail'),
+    url(r'^detail/(\d+)/$', views.detail, name='detail'),
 ]
 
 
