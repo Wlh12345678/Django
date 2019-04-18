@@ -13,7 +13,11 @@
                 {#<li><a href="/booktest/list/{{book.id}}/">{{book.btitle}}</a></li>#}
 
             {# 去除硬编码 #}
-                <li><a href="{% url 'booktest:detail' book.id %}">{{book.btitle}}</a></li>
+                <li><a href="{% url 'booktest:detail' book.id %}">{{book.btitle}}</a>----
+                    <a href="{% url 'booktest:delete' book.id %}">删除</a>----
+                    <a href="{% url 'booktest:addHero' book.id %}">添加英雄</a>
+
+                </li>
             {% empty %}
                 <h3>没有信息</h3>
             {% endfor %}

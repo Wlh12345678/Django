@@ -11,6 +11,9 @@ urlpatterns = [
     url(r'^list/$', views.list, name='list'),
     # (\d+) 详情页页码
     url(r'^detail/(\d+)/$', views.detail, name='detail'),
+    url(r'delete/(\d+)/$', views.delete, name='delete'),
+    url(r'addHero/(\d+)/$', views.addHero, name='addHero'),
+    url(r'addherohandler/$', views.addherohandler, name='addherohandler'),
 ]
 
 
