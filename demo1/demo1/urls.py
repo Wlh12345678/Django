@@ -19,12 +19,24 @@ from django.urls import path
 from django.conf.urls import url,include
 from django.http import HttpResponse
 
+url(r'^',include('booktest.urls',namespace='booktest'))
 urlpatterns = [
     # 进入后台用admin/
     path('admin/', admin.site.urls),
     # include 指明路径 urls所在位置
-    url('booktest/',include('booktest.urls'))
+    url('^',include('booktest.urls',namespace="booktest"))
 ]
 """
 项目的URL声明
+通过 urlpatterns 列表中的内容将路由和视图绑定
+"""
+
+
+"""
+去除硬编码
+1.给应用添加app_name
+2.在项目url配置文件中 在include中给应用添加命名空间
+3.在应用配置文件中 给url配置名字
+4.在html中解除硬编码   {%url'命名空间：url名字'  参数 %}
+
 """
