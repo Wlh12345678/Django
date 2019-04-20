@@ -2,12 +2,38 @@ from django.db import models
 
 # Create your models here.
 
+"""
+一对一的关系
+"""
+class Account(models.Model):
+    username = models.CharField(max_length=20)
+
+class Contact(models.Model):
+    phone = models.CharField(max_length=11)
+    account = models.OneToOneField(Account, on_delete=models.CASCADE)
+
+
+"""
+多对多关系
+"""
+class Host(models.Model):
+    hostname = models.CharField(max_length=20)
+    port = models.IntegerField()
+
+class Application(models.Model):
+    name = models.CharField(max_length=20)
+    h = models.ManyToManyField(to='Host')
+
+"""
+BookInfo和HeroInfo是一对多的关系（一本书对应多个英雄）
+"""
+# 一
 class BookInfo(models.Model):
     btitle = models.CharField(max_length=20)
     bpub_data = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.btitle
-
+# 多
 class HeroInfo(models.Model):
     hname = models.CharField(max_length=20)
     hgender = models.BooleanField(default=False)

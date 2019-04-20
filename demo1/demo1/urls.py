@@ -19,7 +19,6 @@ from django.urls import path
 from django.conf.urls import url,include
 from django.http import HttpResponse
 
-url(r'^', include('booktest.urls',namespace='booktest'))
 urlpatterns = [
     # 进入后台用admin/
     path('admin/', admin.site.urls),

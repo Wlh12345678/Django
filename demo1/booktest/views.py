@@ -51,6 +51,8 @@ def delete(request,id):
 def addHero(request,bookid):
         return render(request, 'booktest/addHero.html', {'bookid': bookid})
 
+
+# 添加英雄信息进数据库
 def addherohandler(request):
     bookid = request.POST['bookid']
     hname = request.POST['heroname']
