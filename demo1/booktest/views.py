@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,reverse,redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from .admin import BookInfo, HeroInfo
 from django.template import loader
@@ -44,7 +44,13 @@ def delete(request,id):
         # 使用render没有刷新请求url
         # return render(request, 'booktest/list.html', {'booklist':b1})
         # 重定向     重新向服务器发起请求 刷新url
-        return HttpResponseRedirect('/list/', {"booklist": b1})
+
+        # return HttpResponseRedirect('/list/', {"booklist": b1})
+        # 视图中解除硬编码 用 reverse
+        # return HttpResponseRedirect(reverse('booktest:list'))
+        # redirect是HttpResponseRedirect的简写
+        return redirect(reverse('booktest:list'))
+
     except:
         return HttpResponse("删除失败")
 

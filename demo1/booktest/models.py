@@ -52,6 +52,15 @@ class HeroInfo(models.Model):
     sex.short_description = '性别'
 
 
+
+"""
+自关联
+"""
+class Area(models.Model):
+    title = models.CharField(max_length=30)
+
+
+
 """
 python manage.py shell 进入命令：不需要运行项目就可以操作数据库
 导入类  from bookset.models import HeroInfo,BookInfo

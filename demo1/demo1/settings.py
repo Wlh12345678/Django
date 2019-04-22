@@ -26,7 +26,10 @@ SECRET_KEY = '$$ynlmqg8-b@+7c4_26%0w%)-b*d5txcc@$mmi_yvi4-3s^g_u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# 出bug时显示404,505的html页面
+# DEBUG = False
 
+#  允许访问列表，列表为空则别人不允许访问 上线后使用    DEBUG = False时必须要配置ALLOWED_HOSTS=['*']
 ALLOWED_HOSTS = []
 
 
