@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投票结果</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+    <div class="con">
+         <h2>投票结果</h2>
+        {{Vquestion.question}}
+        <br>
+        <ul>
+            {% for o in Vquestion.voteinfo_set.all %}
+            <li>{{o.option}}----{{o.vnum}}</li>
+            {% empty %}
+            <li>没有投票</li>
+
+            {% endfor %}
+
+
+        </ul>
+    </div>
+
+</body>
+</html>
