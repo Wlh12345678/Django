@@ -1,0 +1,33 @@
+div.top{
+    background-color: aqua;
+    height: 100px;
+    margin: 0 auto;
+}
+
+div.content{
+    background-color: darkgrey;
+    width: 1100px;
+    height: 2000px;
+    margin: 0 auto;
+}
+
+div.left{
+    background-color: yellow;
+    height: 2000px;
+    width: 30%;
+    margin: 0 auto;
+    float: left;
+}
+
+div.right{
+    background-color: green;
+    height: 2000px;
+    width: 70%;
+    margin: 0 auto;
+}
+
+div.buttom{
+    background-color: lawngreen;
+    height: 100px;
+    margin: 0 auto;
+}
