@@ -1,0 +1,64 @@
+{% extends 'blogtest/base.html' %}
+
+{# 注册extend_fun，使标签可以被引用 #}
+{% load extend_fun %}
+
+{% block left %}
+
+
+    {% comment %}
+    {% getlatestposet as latestposet %}
+    {# 循环标签 #}
+    {% for post in latestposet %}
+        {{post.ptitle}}
+    {% endfor %}
+    {% endcomment %}
+<article class="post post-1">
+    {% for post in postlist %}
+    <header class="entry-header">
+        <h1 class="entry-title">
+            <a href="{% url 'blogtest:detail' post.id  %}">{{post.ptitle}}</a>
+        </h1>
+        <div class="entry-meta">
+            <span class="post-category"><a href="#">{{post.category}}</a></span>
+            <span class="post-date"><a href="#"><time class="entry-date"
+                                                      datetime="2012-11-09T23:15:57+00:00">{{post.creat_time}}</time></a></span>
+            <span class="post-author"><a href="#">{{post.author}}</a></span>
+            <span class="comments-link"><a href="#">4 评论</a></span>
+            <span class="views-count"><a href="#">{{post.read}} 阅读</a></span>
+        </div>
+
+    </header>
+    <div class="entry-content clearfix">
+        <p>{{post.psummary}}</p>
+        <div class="read-more cl-effect-14">
+            <a href="{% url 'blogtest:detail' post.id  %}" class="more-link">继续阅读 <span class="meta-nav">→</span></a>
+        </div>
+    </div>
+    {% endfor %}
+</article>
+
+{% comment  %}
+ <!-- 简单分页效果
+<div class="pagination-simple">
+    <a href="#">上一页</a>
+    <span class="current">第 6 页 / 共 11 页</span>
+    <a href="#">下一页</a>
+</div>
+-->
+<div class="pagination">
+    <ul>
+        <li><a href="">1</a></li>
+        <li><a href="">...</a></li>
+        <li><a href="">4</a></li>
+        <li><a href="">5</a></li>
+        <li class="current"><a href="">6</a></li>
+        <li><a href="">7</a></li>
+        <li><a href="">8</a></li>
+        <li><a href="">...</a></li>
+        <li><a href="">11</a></li>
+    </ul>
+</div>
+{% endcomment %}
+
+{% endblock %}
