@@ -1,5 +1,7 @@
 from django import template
 from ..models import Post
+from comment.models import Comment
+
 # 得到Django的负责管理标签和过滤器的类
 register = template.Library()
 
@@ -32,4 +34,7 @@ def getlatestposet():
 def get_comment_list(id):
     result = Post.objects.get(pk = id).comment_set.all()
     return result
+
+
+
 

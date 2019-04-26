@@ -14,7 +14,9 @@ def index(request):
 def detail(request, id):
     postnum = Post.objects.get(pk=id)
     form = CommentForm()
-    commentlist = Comment.objects.all()
-    return render(request,'blogtest/single.html', {'postnum': postnum, 'form': form,'commentlist':commentlist })
+
+    # commentnum = Comment.objects.all()
+
+    return render(request,'blogtest/single.html', {'postnum': postnum, 'form': form})
 
 

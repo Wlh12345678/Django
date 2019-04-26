@@ -1,5 +1,5 @@
 {% extends 'blogtest/base.html' %}
-
+{# load+文件目录 才能使用过滤器或者标签 #}
 {% load extend_fun %}
 {% block left %}
 <article class="post post-1">
@@ -11,7 +11,7 @@
             <span class="post-date"><a href="#"><time class="entry-date"
                                                       datetime="2012-11-09T23:15:57+00:00">{{postnum.creat_time}}</time></a></span>
             <span class="post-author"><a href="#">{{postnum.author}}</a></span>
-            <span class="comments-link"><a href="#">4 评论</a></span>
+            <span class="comments-link"><a href="#">{{postnum.comment_set.all.count}} 评论</a></span>
             <span class="views-count"><a href="#">{{postnum.read}} 阅读</a></span>
         </div>
     </header>
@@ -51,9 +51,9 @@
         </div>    <!-- row -->
     </form>
     <div class="comment-list-panel">
-        <h3>评论列表，共 <span>4</span> 条评论</h3>
         {% get_comment_list postnum.id as commentlist %}
-        {% for comment in commentlist %}
+        <h3>评论列表，共 <span>{{postnum.comment_set.all.count}}</span> 条评论</h3>
+        {% for comment in postnum.comment_set.all %}
         <ul class="comment-list list-unstyled">
             <li class="comment-item">
                 <span class="nickname">{{comment.name}}</span>
