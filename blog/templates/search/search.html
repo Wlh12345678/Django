@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>搜索结果</title>
+</head>
+<body>
+    {% if query %}
+        {% for post in page.object_list %}
+            <li>{{post.object.ptitle}}</li>
+        {% empty %}
+            没有找到页面
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

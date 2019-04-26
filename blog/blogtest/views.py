@@ -1,7 +1,8 @@
 from django.shortcuts import render,reverse,redirect
 from django.http import HttpResponse
 from .models import Post
-
+from comment.forms import CommentForm
+from comment.models import Comment
 # Create your views here.
 
 def index(request):
@@ -12,4 +13,8 @@ def index(request):
 
 def detail(request, id):
     postnum = Post.objects.get(pk=id)
-    return render(request,'blogtest/single.html', {'postnum':postnum})
+    form = CommentForm()
+    commentlist = Comment.objects.all()
+    return render(request,'blogtest/single.html', {'postnum': postnum, 'form': form,'commentlist':commentlist })
+
+

@@ -18,9 +18,18 @@ def myjoin(value,sep):
     return value.join(sep)
 
 
+
+
+
 """添加标签"""
 @register.simple_tag
 def getlatestposet():
     latepost = Post.objects.all().order_by('-creat_time')
     return latepost
+
+"""添加标签 展示与文章相同id的评论"""
+@register.simple_tag
+def get_comment_list(id):
+    result = Post.objects.get(pk = id).comment_set.all()
+    return result
 
