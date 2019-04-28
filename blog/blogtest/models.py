@@ -19,7 +19,7 @@ class Post(models.Model):
     pbody = models.TextField(max_length=100000)
     creat_time = models.DateTimeField(auto_now_add=True)
     modified_time = models.DateTimeField(auto_now=True)
-    category = models.ForeignKey('Category',on_delete=models.CASCADE)
+    category = models.ForeignKey('Category', on_delete=models.CASCADE)
     tags = models.ManyToManyField('Tag')
     author = models.CharField(max_length=20)
     read = models.PositiveIntegerField(default=0)

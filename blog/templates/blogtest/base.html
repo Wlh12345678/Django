@@ -42,9 +42,9 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
                             <li class="cl-effect-11"><a href="{% url 'blogtest:index' %}" data-hover="首页">首页</a></li>
-                            <li class="cl-effect-11"><a href="full-width.html" data-hover="博客">博客</a></li>
-                            <li class="cl-effect-11"><a href="about.html" data-hover="关于">关于</a></li>
-                            <li class="cl-effect-11"><a href="contact.html" data-hover="联系">联系</a></li>
+                            <li class="cl-effect-11"><a href="{% url 'blogtest:fullwidth' %}" data-hover="博客">博客</a></li>
+                            <li class="cl-effect-11"><a href="{% url 'blogtest:about' %}" data-hover="关于">关于</a></li>
+                            <li class="cl-effect-11"><a href="{% url 'blogtest:contact' %}" data-hover="联系">联系</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
 
@@ -52,7 +52,7 @@
                 <div id="header-search-box">
                     <a id="search-menu" href="#"><span id="search-icon" class="ion-ios-search-strong"></span></a>
                     <div id="search-form" class="search-form">
-                        <form role="search" method="get" id="searchform" action="#">
+                        <form role="search" method="get" id="searchform" action="/search/">
                             <input type="search" placeholder="搜索" required name="q">
                             <button type="submit"><span class="ion-ios-search-strong"></span></button>
                         </form>
@@ -82,9 +82,9 @@
                     <h3 class="widget-title">最新文章</h3>
                     <ul>
                         <li>
-                            <a href="#">
                             {% getlatestposet as latestposet %}
                             {% for post in latestposet %}
+                            <a href="{% url 'blogtest:detail' post.id %} ">
                                 >{{post.ptitle}}<br>
                             {% endfor %}
                             </a>
@@ -92,74 +92,53 @@
                         </li>
                     </ul>
                 </div>
+
                 <div class="widget widget-archives">
                     <h3 class="widget-title">归档</h3>
                     <ul>
+                        {% getarchives as archives %}
+                        {% for post in archives %}
                         <li>
-                            <a href="#">2017 年 5 月</a>
+                            <a href="{% url 'blogtest:archives' post.year post.month %}">{{post.year}}年{{post.month}}月</a>
                         </li>
-                        <li>
-                            <a href="#">2017 年 4 月</a>
-                        </li>
-                        <li>
-                            <a href="#">2017 年 3 月</a>
-                        </li>
+                        {% empty %}
+                        没有文章
+                        {% endfor %}
                     </ul>
                 </div>
 
                 <div class="widget widget-category">
                     <h3 class="widget-title">分类</h3>
                     <ul>
-                        <li>
-                            <a href="#">Django 博客教程 <span class="post-count">(13)</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Python 教程 <span class="post-count">(11)</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Django 用户认证 <span class="post-count">(8)</span></a>
-                        </li>
+                        {% getcategory as category %}
+                        {% for cat in category %}
+                            <li>
+                                <a href="{% url 'blogtest:category' cat.id %}">{{cat.cname}} <span class="post-count">（#）</span></a>
+                            </li>
+                        {% empty %}
+                            没有相关新闻
+                        {% endfor %}
+
                     </ul>
                 </div>
 
                 <div class="widget widget-tag-cloud">
                     <h3 class="widget-title">标签云</h3>
                     <ul>
+                        {% gettag as tag %}
+                        {% for t in tag %}
                         <li>
-                            <a href="#">Django</a>
+                            <a href="{% url 'blogtest:tag' t.id %}">{{t.tname}}</a>
                         </li>
-                        <li>
-                            <a href="#">Python</a>
-                        </li>
-                        <li>
-                            <a href="#">Java</a>
-                        </li>
-                        <li>
-                            <a href="#">笔记</a>
-                        </li>
-                        <li>
-                            <a href="#">文档</a>
-                        </li>
-                        <li>
-                            <a href="#">AngularJS</a>
-                        </li>
-                        <li>
-                            <a href="#">CSS</a>
-                        </li>
-                        <li>
-                            <a href="#">JavaScript</a>
-                        </li>
-                        <li>
-                            <a href="#">Snippet</a>
-                        </li>
-                        <li>
-                            <a href="#">jQuery</a>
-                        </li>
+                        {% empty %}
+                        该标签没有内容
+                        {% endfor %}
                     </ul>
                 </div>
                 <div class="rss">
                     <a href="{% url 'blogtest:rss' %}"><span class="ion-social-rss-outline"></span> RSS 订阅</a>
                 </div>
+
             </aside>
         </div>
     </div>

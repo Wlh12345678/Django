@@ -23,6 +23,6 @@ urlpatterns = [
     url(r'^', include('blogtest.urls', namespace='blogtest')),
     url(r'^', include('comment.urls', namespace='comment')),
     # 全文检索路由
-    url('search/',SearchView(),name='search'),
-    
+    url('search/',SearchView(),name='haystack_search'),
+
 ]

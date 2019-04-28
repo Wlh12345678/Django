@@ -7,7 +7,7 @@
 <body>
     {% if query %}
         {% for post in page.object_list %}
-            <li>{{post.object.ptitle}}</li>
+            <li><a href="{% url 'blogtest:detail' post.object.id %}">{{post.object.ptitle}}</a></li>
         {% empty %}
             没有找到页面
         {% endfor %}
