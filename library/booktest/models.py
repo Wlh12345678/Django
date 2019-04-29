@@ -7,9 +7,9 @@ from django.db import models
 class UserInfo(models.Model):
     name = models.CharField(max_length=20)      #用户名
     password = models.CharField(max_length=20)  #密码
-    school = models.CharField(max_length=20)    #学院
-    sno = models.IntegerField()                 #学号
-    email = models.EmailField(max_length=20)    #邮箱
+    school = models.CharField(max_length=20, null=True, blank=True)    #学院
+    sno = models.CharField(max_length=20, null=True, blank=True)       #学号
+    email = models.EmailField(max_length=20, null=True, blank=True)    #邮箱
 
 
 """图书信息"""

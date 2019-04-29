@@ -40,8 +40,32 @@ def sendemail(request):
         return HttpResponseRedirect("发送失败")
     return HttpResponse("发送成功")
 
-def readerregister(request):
-    if request.method == "GET":
-        return render(request,)
+# def readerregister(request):
+#     if request.method == "GET":
+#         return render(request,)
+
+def readerlogin(request):
+    return render(request, 'reader_login.html')
+    # return HttpResponse('登录页面')
+
+def register(request):
+    if request.method == 'GET':
+        return render(request, 'register.html')
+        # return HttpResponse('注册页面')
+
+    elif request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        if password != request.POST['password2']:
+            error = '密码输入不一致'
+            return render(request, 'register.html', {'error': error})
+        college = request.POST['college']
+        number = request.POST['number']
+        email = request.POST['email']
+        userinfo = UserInfo(name=username, password=password, school=college, sno=number, email=email)
+        userinfo.save()
+
+        return render(request, 'reader_login.html')
+        # return HttpResponse('用户注册信息提交数据库成功！')
 
 

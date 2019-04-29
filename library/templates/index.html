@@ -1,8 +1,9 @@
 {% extends "layout.html" %}
 {% block title %}主页{% endblock %}
 {% block link %}
+
   <a href="#">管理员登录 </a>|
-  <a href="#">读者登录 </a>
+  <a href=" {% url 'booktest:readerlogin' %} ">读者登录 </a>
 {% endblock %}
 
 {% block body %}
@@ -59,7 +60,7 @@
   </div><br>
 
     <div>
-
+        <a href="/edit/">添加富文本</a><br>
         {% for message in messageinfos %}
         <br>
         标题：{{message.title}}<br>
