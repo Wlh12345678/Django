@@ -39,3 +39,9 @@ def sendemail(request):
         print(e)
         return HttpResponseRedirect("发送失败")
     return HttpResponse("发送成功")
+
+def readerregister(request):
+    if request.method == "GET":
+        return render(request,)
+
+
