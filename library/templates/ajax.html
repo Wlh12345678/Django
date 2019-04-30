@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax</title>
+
+    <script src="/static/js/lib/jquery/jquery-2.1.4.js"></script>
+
+    <script>
+        $(function(){
+
+            $('#load').click(function(){
+                console.log('标签加载完毕');
+                //在页面按钮下显示data文件夹内的内容
+                $('#info').load('/static/data/data.txt');
+                $.ajax({
+                    url:"/ajaxajax/",
+                    type:'post',
+                    data:{'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()},
+                    success:function (data) {
+                        console.log(data);
+                    }
+                })
+            })
+        })
+    </script>
+
+
+</head>
+<body>
+    {% csrf_token %}
+    <button id="load">点击load内容</button>
+    <div id="info"></div>
+    <div id="info2"></div>
+</body>
+</html>
